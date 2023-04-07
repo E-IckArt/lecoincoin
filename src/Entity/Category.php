@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categorie')]
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'category')]
     private ?self $parent = null;
 
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
@@ -61,7 +61,7 @@ class Category
     /**
      * @return Collection<int, self>
      */
-    public function getCategorie(): Collection
+    public function getCategory(): Collection
     {
         return $this->category;
     }
@@ -87,4 +87,9 @@ class Category
 
         return $this;
     }
+
+//    public function __toString(): string
+//    {
+//        return $this->name;
+//    }
 }
