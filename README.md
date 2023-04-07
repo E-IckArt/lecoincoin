@@ -73,4 +73,9 @@ to have the [inotify-tools]( [inotify-tools/inotify-tools](github.com/inotify-to
 
     composer coverage-report-html-open-browser-watch
 
+## Assets
+
+### DB schema
+
+![image](https://user-images.githubusercontent.com/90518233/230645486-dea44463-5a9f-49e5-a1e0-07098e77bc0d.png)
 
