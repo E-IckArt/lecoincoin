@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\CouponsType;
+use App\Entity\CouponType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CouponsType>
+ * @extends ServiceEntityRepository<CouponType>
  *
- * @method CouponsType|null find($id, $lockMode = null, $lockVersion = null)
- * @method CouponsType|null findOneBy(array $criteria, array $orderBy = null)
- * @method CouponsType[]    findAll()
- * @method CouponsType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CouponType|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CouponType|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CouponType[]    findAll()
+ * @method CouponType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CouponsTypeRepository extends ServiceEntityRepository
+class CouponTypeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CouponsType::class);
+        parent::__construct($registry, CouponType::class);
     }
 
-    public function save(CouponsType $entity, bool $flush = false): void
+    public function save(CouponType $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CouponsTypeRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(CouponsType $entity, bool $flush = false): void
+    public function remove(CouponType $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CouponsTypeRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return CouponsType[] Returns an array of CouponsType objects
+//     * @return CouponType[] Returns an array of CouponType objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CouponsTypeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CouponsType
+//    public function findOneBySomeField($value): ?CouponType
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
