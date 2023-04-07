@@ -12,6 +12,18 @@ Make sure to have PHP 8.1 >= and Composer and Symfony CLI installed.
 
     symfony server:start
 
+## Configure your .env file
+
+    cp .env .env.local
+
+Then modifiy the `.env.local` file to match your configuration.(database, mailer, etc.)
+
+## Create the database
+
+(I have used MySQL SGBD)
+
+    php bin/console doctrine:database:create
+
 ## Create migration
 
     php bin/console make:migration

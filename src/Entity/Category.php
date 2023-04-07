@@ -24,9 +24,13 @@ class Category
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $category;
 
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
+    private Collection $product;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
+        $this->product = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,4 +96,34 @@ class Category
 //    {
 //        return $this->name;
 //    }
+
+/**
+ * @return Collection<int, Product>
+ */
+public function getProduct(): Collection
+{
+    return $this->product;
+}
+
+public function addProduct(Product $product): self
+{
+    if (!$this->product->contains($product)) {
+        $this->product->add($product);
+        $product->setCategory($this);
+    }
+
+    return $this;
+}
+
+public function removeProduct(Product $product): self
+{
+    if ($this->product->removeElement($product)) {
+        // set the owning side to null (unless already changed)
+        if ($product->getCategory() === $this) {
+            $product->setCategory(null);
+        }
+    }
+
+    return $this;
+}
 }
