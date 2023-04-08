@@ -11,8 +11,9 @@ Make sure to have PHP 8.1 >= and Composer and Symfony CLI installed.
 ## Run the app
 
     symfony server:start
+    npm run watch
 
-## Configure your .env file
+## Configure the .env file
 
     cp .env .env.local
 
