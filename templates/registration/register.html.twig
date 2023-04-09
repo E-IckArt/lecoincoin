@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 my-3">
+                <h1 class="text-center">Inscription</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 my-3">
+                <div class="alert alert-info">
+                    <p class="my-0">Les champs marqués d'un * sont obligatoires.</p>
+                </div>
+                {{ form_start(registrationForm) }}
+                <fieldset>
+                    <legend>Mes identifiants</legend>
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Password'
+                    }) }}
+                    {{ form_row(registrationForm.avatar) }}
+                </fieldset>
+
+                <fieldset>
+                    <legend>Mes coordonnées</legend>
+                    {{ form_row(registrationForm.firstname) }}
+                    {{ form_row(registrationForm.lastname) }}
+                    {{ form_row(registrationForm.address) }}
+                    {{ form_row(registrationForm.city) }}
+                    {{ form_row(registrationForm.zipcode) }}
+                </fieldset>
+
+                {{ form_row(registrationForm.RGPDConsent) }}
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 my-3 text-center">
+                        <button type="submit" class="btn btn-primary">Je crée mon compte</button>
+                        <a href="{{ path('app_login') }}" class="btn btn-secondary">J'ai déjà un compte</a>
+                    </div>
+                </div>
+                    {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

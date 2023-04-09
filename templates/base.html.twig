@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %} - LeCoinCoin E-Commerce</title>
@@ -18,11 +18,9 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        <div class="container-fluid">
+    <body class="flex flex-column">
             {% include '_partials/header.html.twig' %}
             {% block body %}{% endblock %}
             {% include '_partials/footer.html.twig' %}
-        </div>
     </body>
 </html>
