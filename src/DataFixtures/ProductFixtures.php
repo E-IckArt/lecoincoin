@@ -20,7 +20,7 @@ class ProductFixtures extends Fixture
 
         for($prod = 1; $prod <= 10; $prod++) {
             $newProduct = new Product();
-            $newProduct->setName($faker->words(15, true));
+            $newProduct->setName($faker->text(15, true));
             $newProduct->setDescription($faker->paragraphs(3, true));
             $newProduct->setSlug($this->slugger->slug($newProduct->getName())->lower());
             $newProduct->setPrice($faker->numberBetween( 900, 150000));
