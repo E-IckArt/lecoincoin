@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    <section class="container my-3">
+    <section class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 my-3">
                 <h1 class="text-center">Me connecter</h1>
@@ -22,17 +22,17 @@
                                 ('app_logout') }}">Me déconnecter</a>
                         </div>
                     {% endif %}
-                    <div class="row mb-3">
+                    <div class="mb-3">
                     <label for="inputEmail">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
                            autocomplete="email" required autofocus>
                     </div>
-                    <div class="row mb-3">
+                    <div class="mb-3">
                     <label for="inputPassword">Mot de passe</label>
                     <input type="password" name="password" id="inputPassword" class="form-control"
                            autocomplete="current-password" required>
                     </div>
-                    <div class="row mb-3">
+                    <div class="mb-3">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"
                     >
                     </div>
@@ -47,13 +47,15 @@
                         </label>
                     </div>
                     #}
-
-                    <button class="btn btn-lg btn-primary" type="submit">
+                    <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">
                         Connexion
                     </button>
-                    <a href="{{ path('app_register') }}" class="btn btn-lg btn-secondary">Je n'ai pas encore de compte,
-                        je m'inscris
+                    </div>
+                    <div class="mb-3">
+                    <a href="{{ path('app_register') }}" class="link-primary">Je n'ai pas encore de compte. Je m'inscris !
                     </a>
+                    </div>
                 </form>
             </div>
         </div>
