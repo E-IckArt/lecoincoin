@@ -27,6 +27,7 @@ class UserFixtures extends Fixture
         $admin->setZipcode('75000');
         $admin->setCity('QuackVille');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setCreatedAt(date_create_immutable());
 
         $manager->persist($admin);
 
@@ -42,6 +43,7 @@ class UserFixtures extends Fixture
             $newUser->setZipcode(str_replace(' ', '', $faker->postcode));
             $newUser->setCity($faker->city);
             $newUser->setRoles(['ROLE_USER']);
+            $newUser->setCreatedAt(date_create_immutable());
 
             $manager->persist($newUser);
         }

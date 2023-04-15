@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les produits de la catégorie {{ category.name }}{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1 class="text-center my-5">Liste des produits de la catégorie {{ category.name }}</h1>
+            </div>
+        </section>
+        <section class="row">
+            {% if products|length > 0 %}
+                {% for product in products %}
+                    <div class="col mb-3 me-3">
+                        <div class="card h-100 me-0" style="width: 12rem;">
+                            <img src="https://picsum.photos/id/237/200/200" class="card-img-top" alt="{{ product.name
+                            }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <div class="col d-flex justify-content-between flex-wrap">
+                                    <p class="badge bg-secondary">{{ product.category.name }}</p>
+                                    {% if product.stock <=5 %}
+                                        <p class="badge bg-info position-relative">
+                                            Stock faible
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {{ product.stock }}<span class="visually-hidden">{{ product.name }} stock</span>
+                                    </span>
+                                        </p>
+{#                  <p class="text-danger">Plus que {{ product.stock }} produits en stock</p> #}
+                                    {% endif %}
+                                </div>
+
+                                <p class="card-text">{{ product.price }} €</p>
+
+                                <p class="card-text"> Quantité :</p>
+                                <a href="#" class="btn btn-primary rounded-1 mb-3">Achat rapide</a>
+                                <a href="{{ path('product_show', {slug: product.slug}) }}" class="btn btn-outline-primary
+                            rounded-1">Voir les détails</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info my-5" role="alert">
+                    Aucun produit dans cette catégorie pour le moment
+                </div>
+            {% endif %}
+        </section>
+        <section class="row">
+            <div class="col-12 text-center">
+                <a href="{{ path('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+            </div>
+    </main>
+
+{% endblock %}

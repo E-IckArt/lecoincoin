@@ -32,9 +32,31 @@ class CategoryFixtures extends Fixture
         $this->createCategory('Jeux d\'eau', $toys, $manager);
 
         $walk = $this->createCategory('Promenade', null, $manager);
+        $this->createCategory('Harnais', $walk, $manager);
+        $this->createCategory('Laisse', $walk, $manager);
+        $this->createCategory('Collier', $walk, $manager);
+        $this->createCategory('Cage', $walk, $manager);
+        $this->createCategory('Transport', $walk, $manager);
+        $this->createCategory('Sécurité', $walk, $manager);
+
         $sleep = $this->createCategory('Le Coin Repos', null, $manager);
+        $this->createCategory('Matelas', $sleep, $manager);
+        $this->createCategory('Coussin', $sleep, $manager);
+        $this->createCategory('Panier', $sleep, $manager);
+
         $hygiene = $this->createCategory('Hygiène et soins', null, $manager);
+        $this->createCategory('Shampoing', $sleep, $manager);
+        $this->createCategory('Après-shampoing', $sleep, $manager);
+        $this->createCategory('Antiparasitaires', $sleep, $manager);
+        $this->createCategory('Brosserie', $sleep, $manager);
+        $this->createCategory('Litière', $sleep, $manager);
+
+
         $vet = $this->createCategory('Produits vétérinaires', null, $manager);
+        $this->createCategory('Croquettes vétérinaires', $vet, $manager);
+        $this->createCategory('Compléments alimentaires vétérinaires', $vet, $manager);
+        $this->createCategory('Antiparasitaires vétérinaires', $vet, $manager);
+        $this->createCategory('Soins vétérinaires', $vet, $manager);
 
         $manager->flush();
     }
@@ -44,6 +66,7 @@ class CategoryFixtures extends Fixture
         $category->setName($name);
         $category->setSlug($this->slugger->slug($category->getName())->lower());
         $category->setParent($parent);
+        $category->setCategoryOrder($this->counter);
         $manager->persist($category);
 
 

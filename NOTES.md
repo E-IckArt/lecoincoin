@@ -36,23 +36,80 @@ Exemple : afficher l'image dans le template
 composer require --dev orm-fixtures fakerphp/faker
 ```
 
-### 2 - Créer un nouveau fichier dans le dossier src/DataFixtures/ (ex: AppFixtures.php) et y ajouter les propriétés nécessaires à la création des données de test
+### 2 - Taper la commande pour générer le fichier :
 
 ```
 symfony console make:fixtures
 ```
 
+Puis dans la console, choisir le nom de la classe (exemple : ProductFixtures)
+
+Compléter le fichier avec les données à générer.  
+Ces données seront enregistrées dans la base de données.  
+Elles peuvent être réelles ou fictives (via l'utilisation du faker)
+
+
 ![img.png](img.png)
 
 ### 3 - Dans la console taper la commande suivante pour générer les données de test
+
+Pour jouer toutes les fixtures :
 ```
 symfony console doctrine:fixtures:load
 ```
 
-ATTENTION ! Cette commande efface tout le contenu de la base.
+Pour jouer une seule fixture :
+
+```
+symfony console doctrine:fixtures:load --group=somethingFixtures
+```
+
+**ATTENTION ! CETTE COMMANDE EFFACE TOUTE LA BDD.**
 
 ![img_1.png](img_1.png)
 
+
+## Données DB dans un template twig
+
+Cette commande permet de voir toutes les données des variables disponibles au niveau d'un template twig particulier :
+
+```twig
+{{ dump() }}
+```
+
+
+Les variables se trouvent dans le controller :
+- les variables du controller  
+
+![img_2.png](img_2.png)
+
+- le dump dans la vue 
+
+![img_5.png](img_5.png)
+
+- le résultat dans le navigateur
+
+![img_3.png](img_3.png)
+
+## 
+
+## Débat nom d'entité au singulier ou au pluriel en BDD ?
+
+### Mon avis
+
+Il est plus logique de les mettre noms au **pluriel**, notamment pour les boucles :
+- au pluriel :
+```twig
+{% for quack in quacks %}
+```
+- au singulier :
+```twig
+{% for quack in quack %}
+```
+
+Sinon, il faut pouvoir les modifier dans le controller et ...s'en souvenir pour chaque entité...
+
+![img_4.png](img_4.png)
 
 
 

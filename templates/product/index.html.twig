@@ -29,8 +29,8 @@
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ product.slug }}</td>
                 <td>
-                    <a href="{{ path('app_product_show', {'slug': product.slug}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'slug': product.slug}) }}">edit</a>
+                    <a href="{{ path('product_show', {'slug': product.slug}) }}">show</a>
+                    <a href="{{ path('product_edit', {'slug': product.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
+    <a href="{{ path('product_new') }}">Create new</a>
 {% endblock %}

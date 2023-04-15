@@ -64,6 +64,8 @@ class Category
     public function setCategoryOrder(?int $categoryOrder): self
     {
         $this->categoryOrder = $categoryOrder;
+
+        return $this;
     }
 
     public function getParent(): ?self

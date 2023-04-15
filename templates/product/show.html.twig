@@ -3,20 +3,18 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block body %}
-    <h1>{{ product.name }}</h1>
+    <div class="container w-75 mx-auto">
+        <h1 class="my-5 text-center">{{ product.name }}</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ product.id }}</td>
             </tr>
             <tr>
                 <th>Catégorie</th>
-{#                TODO - Afficher category.name#}
-                {% for category in product.category %}
-                    <td>{{ category.name }}</td>
-                {% endfor %}
+                <td>{{ product.category.name }}</td>
             <tr>
                 <th>Name</th>
                 <td>{{ product.name }}</td>
@@ -35,19 +33,35 @@
             </tr>
             <tr>
                 <th>Created_at</th>
-                {{ dump(product) }}
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Slug</th>
                 <td>{{ product.slug }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+        <div class="row">
+            <div class="col-md-12 mx-auto mb-3 text-center">
+                <a href="{{ path('categories_category-products', {slug: product.category.name }) }}"
+                   class="btn btn-primary">Retour à la catégorie {{ product.category.name }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto text-center">
+                <a href="{{ path('product_edit', {'slug': product.slug}) }}" class="btn btn-outline-warning">Edit</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto text-center">
+                {{ include('product/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_product_edit', {'slug': product.slug}) }}">edit</a>
 
-    {{ include('product/_delete_form.html.twig') }}
+
+
 {% endblock %}
